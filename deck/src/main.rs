@@ -1,8 +1,9 @@
 
 
 fn main() {
-    loop {
-    print!("Hello Rust !");
+    let arr = [1, 2, 3];
+    for element in &arr {
+    print!("the value is : {} \n", element);
     }
 }
 
