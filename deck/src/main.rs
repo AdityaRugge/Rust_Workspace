@@ -1,11 +1,11 @@
-fn write_array(mut x: [u8; 5]) {
-    x[0] = 10; // This line will cause a compile-time error because x is not mutable
-    println!("Processing array: {:?}", x);
+fn write_array(x1: &mut [u8; 5]) {
+    x1[0] = 10;
+    println!("Processing array: {:?}", x1);
 }
 
 fn main() {
-    let x: [u8; 5] = [1, 2, 3, 4, 5];
-    write_array(x);
+    let mut x: [u8; 5] = [1, 2, 3, 4, 5];
+    write_array(&mut x);
     print!("from main: {:?}", x);
 }
 
