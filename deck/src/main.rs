@@ -1,15 +1,11 @@
 
 
 fn main() {
-    let x = 5;
+    let x = 51;
 
     match x {
-            1 => print!("one"),
-            2 => print!("two"),
-            3 => print!("three"),
-            4 => print!("four"),
-            5 => print!("five"),
-            _ => print!("something else"),
+            1 | 2 | 3 | 4 | 5 => print!("the value is in range: {}", x),
+            _ => print!("the value is something else"),
         };
         
     } 
