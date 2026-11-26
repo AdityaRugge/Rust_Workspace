@@ -1,25 +1,29 @@
 #[derive(Debug)]
 
 struct Account {
-    id: u32,
+    balance: u32,
     description: String,
 }
 
 fn change_account( account: &mut Account) {
-    account.id = 10;
+    account.balance = 10;
 }
 
 fn main(){
 
     let mut account = Account {
-        id: 1,
+        balance: 1,
         description: String::from("Complete bank transaction \n"),
     };
 
-    let account_ref = &account; //read only reference
-    change_account(&mut account); //mutable reference
-    println!(" After bank transaction \n {:#?}", account); 
-    prinytln!(" After bank transaction \n {:#?}", account_ref); // This will throw an error because we cannot have a mutable reference and an immutable reference at the same time.
+    let account_ref = &mut account; //mutable reference
+    change_account(account_ref); //passing mutable reference to function
+    println!(" \n {:#?}", account_ref); 
+
+    account.balance = 100; //directly changing the value of balance
+    println!(" \n {:#?}", account); 
 }
+
+    
 
 
