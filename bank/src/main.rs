@@ -17,10 +17,13 @@ fn main(){
     };
 
     let account_ref = &mut account; //mutable reference
+    
+    account.balance = 100; //directly changing the value of balance
+    
     change_account(account_ref); //passing mutable reference to function
     println!(" \n {:#?}", account_ref); 
 
-    account.balance = 100; //directly changing the value of balance
+
     println!(" \n {:#?}", account); 
 }
 
