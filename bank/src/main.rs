@@ -18,7 +18,7 @@ fn main(){
 
     let account_ref = &mut account; //mutable reference
     
-    account.balance = 100; //directly changing the value of balance
+    account.balance = 100; // error: cannot assign to `account.balance` because it is borrowed
     
     change_account(account_ref); //passing mutable reference to function
     println!(" \n {:#?}", account_ref); 
