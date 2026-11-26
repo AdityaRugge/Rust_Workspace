@@ -5,17 +5,19 @@ struct Task {
     description: String,
 }
 
-fn print_description(task: &Task) {
-    println!("Task ID: {}, Description: {}", task.id, task.description);
+fn change_task( task: &mut Task) {
+    task.id = 10;
 }
 
 fn main(){
-    let task = Task {
+
+    let mut task = Task {
         id: 1,
-        description: String::from("Complete the bank transaction"),
+        description: String::from("Complete bank transaction \n"),
     };
-    print_description(&task);
-    println!("{:#?}", task); 
+
+    change_task(&mut task);
+    println!(" After bank transaction \n {:#?}", task); 
 }
 
 
