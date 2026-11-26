@@ -4,3 +4,5 @@ deck/src/main
 bank/Cargo.lock
 bank/src/main
 bank/target/*
+media/target/*
+media/Cargo.lock

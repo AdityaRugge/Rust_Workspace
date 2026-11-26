@@ -31,11 +31,11 @@ fn add_account(bank: &mut Bank, account: Account) {
 }
 
 fn main() {
-   //Test code : breaking the ownership rules of rust
+   //Test code
    let num =5;
    let num_1 = num;
 
-    println!("{:#?} {:#?}", num, num_1);
+    println!("{:#?}", num, num);
 }
 
 
