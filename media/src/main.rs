@@ -6,6 +6,26 @@ enum Media{
     Audiobook{title: String, author: String, duration: u32},
 }
 
+impl Media {
+    fn description(&self) -> String {
+        match self {
+            Media::Book { title, author, pages } => {
+                print!("\n from book description \n");
+                format!("Book: '{}' by {} ({} pages)", title, author, pages)
+            }
+            Media::Movie { title, director, duration } => {
+                print!("\n from movie description \n");
+                format!("Movie: '{}' directed by {} ({} minutes)", title, director, duration)
+            }
+            Media::Audiobook { title, author, duration } => {
+                print!("\n from audiobook description \n");
+                format!("Audiobook: '{}' by {} ({} minutes)", title, author, duration)
+            }
+        }
+    }
+    
+}
+
 fn print_media(media: Media) {
     println!("{:?} \n", media);
 }
@@ -27,6 +47,10 @@ fn main() {
         director: String::from("The Wachowskis"),
         duration: 136,
     };
+
+    audiobook.description();
+    book.description();
+    movie.description();    
 
     print_media(audiobook);
     print_media(book);
