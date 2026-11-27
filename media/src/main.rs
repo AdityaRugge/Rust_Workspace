@@ -21,7 +21,7 @@ impl Media {
         }
     } 
 }
-
+#[derive(Debug)]
 struct Catalog {
     items: Vec<Media>,
 }
@@ -72,6 +72,7 @@ fn main() {
     catalog.add_item(movie);
 
     catalog.list_items();
+    println!("Catalog: {:?}", catalog);
 
     
     // println!("{} \n", audiobook.description());
