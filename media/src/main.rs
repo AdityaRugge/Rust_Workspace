@@ -4,6 +4,8 @@ enum Media{
     Book{title: String, author: String, pages: u32},
     Movie{title: String, director: String, duration: u32},
     Audiobook{title: String, author: String, duration: u32},
+    podcast{episodes: u32},
+
 }
 
 impl Media {
@@ -18,9 +20,13 @@ impl Media {
             Media::Audiobook { title, author, duration } => {
                 format!("Audiobook: '{}' by {} ({} minutes)", title, author, duration)
             }
-        }
+            Media::podcast { episodes } => {
+                format!("Podcast with {} episodes", episodes)
+            }
     } 
 }
+}
+
 #[derive(Debug)]
 struct Catalog {
     items: Vec<Media>,
@@ -70,6 +76,7 @@ fn main() {
     catalog.add_item(audiobook);
     catalog.add_item(book);
     catalog.add_item(movie);
+    catalog.add_item(Media::podcast { episodes: 10 });
 
     catalog.list_items();
     println!("Catalog: {:?}", catalog);

@@ -69,3 +69,36 @@ Deciding when to use enums vs. structs is tricky. In many cases, you can use eit
   - **You might want to use structs.**
 - **Does each thing have some same, but some different methods?**
   - **You might want to use an enum.**
+
+# Rust `Option<T>` Enum
+
+Rust does not have `null`, `nil`, or `undefined`. Instead, it provides the built-in `Option<T>` enum to represent a value that may or may not exist.
+
+## Variants
+
+- **`Some(value)`**: Contains a wrapped value of type `T`.
+- **`None`**: Represents the absence of a value.
+
+## Working with `Option`
+
+Because `Option` is an enum rather than a nullable reference, you cannot use the inner value directly without unpacking it safely:
+
+- **`match` statement**: Exhaustively handles both `Some(value)` and `None`. The compiler enforces that every possible case is covered.
+- **`if let`**: A concise way to handle only one variant (such as `Some(value)`) while ignoring the other.
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+
+fn describe_number(num: Option<i32>) {
+    match num {
+        Some(value) => println!("Got a value: {value}"),
+        None => println!("No value present"),
+    }
+
+    if let Some(value) = num {
+        println!("Matched with if let: {value}");
+    }
+}
