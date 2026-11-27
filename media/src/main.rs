@@ -10,25 +10,43 @@ impl Media {
     fn description(&self) -> String {
         match self {
             Media::Book { title, author, pages } => {
-                print!("\n from book description \n");
                 format!("Book: '{}' by {} ({} pages)", title, author, pages)
             }
             Media::Movie { title, director, duration } => {
-                print!("\n from movie description \n");
                 format!("Movie: '{}' directed by {} ({} minutes)", title, director, duration)
             }
             Media::Audiobook { title, author, duration } => {
-                print!("\n from audiobook description \n");
                 format!("Audiobook: '{}' by {} ({} minutes)", title, author, duration)
             }
         }
-    }
-    
+    } 
 }
 
-fn print_media(media: Media) {
-    println!("{:?} \n", media);
+struct Catalog {
+    items: Vec<Media>,
 }
+
+/* Catalog is a collection of media items */
+ impl Catalog {
+    fn new() -> Self {
+        Catalog { items: Vec::new() }
+    }
+
+    fn add_item(&mut self, item: Media) {
+        self.items.push(item);
+    }
+
+    fn list_items(&self) {
+        for item in &self.items {
+            println!("{}", item.description());
+        }
+    }
+}
+
+// // fn print_media(media: Media) {
+//     println!("{:?} \n", media);
+// }
+
 fn main() {
     let audiobook = Media::Audiobook {
         title: String::from("The Rust Programming Language"),
@@ -48,11 +66,20 @@ fn main() {
         duration: 136,
     };
 
-    audiobook.description();
-    book.description();
-    movie.description();    
+    let mut catalog = Catalog::new();
+    catalog.add_item(audiobook);
+    catalog.add_item(book);
+    catalog.add_item(movie);
 
-    print_media(audiobook);
-    print_media(book);
-    print_media(movie);
+    catalog.list_items();
+
+    
+    // println!("{} \n", audiobook.description());
+    // println!("{} \n", book.description());
+    // println!("{} \n", movie.description());
+
+    // print_media(audiobook);
+    // print_media(book);
+    // print_media(movie);
+
 }

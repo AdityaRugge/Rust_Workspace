@@ -58,3 +58,14 @@ When designing a function signature in Rust, choose how to accept an argument ba
 | **Store or consume** the data | Owned value | `T` | No (moved) |
 | **Read or inspect** the data | Immutable reference | `&T` | Yes |
 | **Modify or update** the data | Mutable reference | `&mut T` | Yes |
+
+# Enums vs. Structs
+
+Deciding when to use enums vs. structs is tricky. In many cases, you can use either.
+
+## Decision Questions
+
+- **Does each thing you're modeling have the same methods?**
+  - **You might want to use structs.**
+- **Does each thing have some same, but some different methods?**
+  - **You might want to use an enum.**
